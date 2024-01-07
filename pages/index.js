@@ -13,6 +13,7 @@ import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "../components/Header";
 import NutritionFacts from "../components/NutritionFacts";
 import Footer from "../components/Footer";
+import Main from "../components/Main";
 import theme from "../utils/theme";
 
 function HomePage() {
@@ -67,13 +68,12 @@ function HomePage() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
+      <Main />
       <Container
         maxWidth="md"
         style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}
       >
-        <Typography variant="h3" gutterBottom>
-          Running Coach is a GPT designed to serve as a digital running assistant.
-        </Typography>
+
         <Paper elevation={24} style={{ padding: "20px" }}>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>

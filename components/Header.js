@@ -1,21 +1,29 @@
 import React from "react";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-} from "@material-ui/core";
+import { AppBar, Toolbar, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    backgroundColor: "#121212",
+  },
+  title: {
+    flexGrow: 1,
+    textAlign: "center",
+    fontFamily: "Nike", // Use the appropriate font family
+    fontSize: "32px",
+    color: "#ffffff", // White color for text
+  },
+}));
 
 function Header() {
+  const classes = useStyles();
+
   return (
-    <AppBar position="static" color="primary">
+    <AppBar position="static" className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          Running Coach
+        <Typography variant="h5" className={classes.title}>
+          Running Coach GPT
         </Typography>
-        <IconButton edge="end" color="inherit">
-          <img src="/logo.png" alt="Logo" style={{ height: "40px" }} />
-        </IconButton>
       </Toolbar>
     </AppBar>
   );
