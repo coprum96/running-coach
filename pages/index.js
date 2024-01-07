@@ -118,7 +118,7 @@ function HomePage() {
             <Typography color="error">
               An error occurred: {error === "Unauthorized: Please provide a valid API key."
                 ? "Please provide a valid API key."
-                : "Unable to get nutrition info. Please try again later."}
+                : "Unable to get coaching info. Please try again later."}
             </Typography>
           )}
           {nutrition && <NutritionFacts data={nutrition} />}

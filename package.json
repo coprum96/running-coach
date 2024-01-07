@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "devserver": "nodemon pages/api/server.js",
-    "test": "jest"
+    "test": "jest",
+    "start:all": "concurrently \"npm run devserver\" \"npm run dev\""
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",

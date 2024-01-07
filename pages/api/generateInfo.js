@@ -1,8 +1,9 @@
 const { Configuration, OpenAIApi } = require('openai');
-const { recipePrompt }  = require('./prompt.json');
+// import json data from prompt.json file
+const { recipePrompt } = require('./promt.json');
 
 const configuration = new Configuration({
-    apiKey:process.env.OPEN_API_KEY,
+    apiKey: process.env.OPENAI_API_KEY,
 });
 
 const openai = new OpenAIApi(configuration);
@@ -34,7 +35,7 @@ const generateInfo = async (req, res) => {
       }
       return res.status(500).json({
         error:
-          "An error occurred while generating coaching. Please try again later.",
+          "An error occurred while generating recipe information. Please try again later.",
       });
     }
   };
