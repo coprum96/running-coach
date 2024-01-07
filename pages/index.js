@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Button,
   CircularProgress,
@@ -24,6 +24,7 @@ function HomePage() {
   async function handleSubmit(event) {
     event.preventDefault();
     setLoading(true);
+
     try {
       const response = await fetch(
         "http://localhost:8080/openai/generateinfo",
@@ -36,20 +37,24 @@ function HomePage() {
         }
       );
 
-      // get nutrition info
-      const nutrition = await response.json();
-
-      // display nutrition info
-      if (nutrition.data) {
-        console.log(nutrition);
-        setNutrition(nutrition.data);
-        setLoading(false);
+      if (response.ok) {
+        const nutrition = await response.json();
+        if (nutrition.data) {
+          console.log(nutrition);
+          setNutrition(nutrition.data);
+        } else {
+          setError("Unable to get coaching info");
+        }
+      } else if (response.status === 401) {
+        setError("Unauthorized: Please provide a valid API key.");
       } else {
-        setError("Unable to get nutrition info");
-        setLoading(false);
+        const errorMessage = await response.text();
+        setError(`An error occurred: ${errorMessage}`);
       }
     } catch (error) {
-      setError(error);
+      console.error("Error during fetch:", error);
+      setError(`An error occurred: ${error.message || error}`);
+    } finally {
       setLoading(false);
     }
   }
@@ -62,9 +67,12 @@ function HomePage() {
   return (
     <ThemeProvider theme={theme}>
       <Header />
-      <Container maxWidth="md" style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}>
+      <Container
+        maxWidth="md"
+        style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}
+      >
         <Typography variant="h3" gutterBottom>
-        Running Coach is a GPT designed to serve as a digital running assistant. 
+          Running Coach is a GPT designed to serve as a digital running assistant.
         </Typography>
         <Paper elevation={24} style={{ padding: "20px" }}>
           <form onSubmit={handleSubmit}>
@@ -104,19 +112,16 @@ function HomePage() {
             </Grid>
           </form>
         </Paper>
-        <div style={{ paddingTop: "40px" }}>
-          {loading && (
-            <Grid item xs={12}>
-              <CircularProgress />
-            </Grid>
-          )}
-          {error ? (
+        <div style={{ paddingTop: "40px", textAlign: "center" }}>
+          {loading && <CircularProgress />}
+          {error && (
             <Typography color="error">
-              An error occurred: {error.errorMessage}
+              An error occurred: {error === "Unauthorized: Please provide a valid API key."
+                ? "Please provide a valid API key."
+                : "Unable to get nutrition info. Please try again later."}
             </Typography>
-          ) : nutrition ? (
-            <NutritionFacts data={nutrition} />
-          ) : null}
+          )}
+          {nutrition && <NutritionFacts data={nutrition} />}
         </div>
       </Container>
       <Footer />
