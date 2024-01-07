@@ -11,7 +11,7 @@ function Header() {
     <AppBar position="static" color="primary">
       <Toolbar>
         <Typography variant="h6" style={{ flexGrow: 1 }}>
-          MealMetrics 🍎
+          Running Coach
         </Typography>
         <IconButton edge="end" color="inherit">
           <img src="/logo.png" alt="Logo" style={{ height: "40px" }} />

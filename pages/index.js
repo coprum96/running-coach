@@ -1,29 +1,3 @@
-/*
-Create a HomePage Component with the following specifications:
-1. A H1 with the text "Find Nutrition Facts for any recipe"
-2. Create a text area and a button. When the button is clicked, the text in the text area should be sent to the server as a POST request.
-3. The server should respond with the nutrition facts for the recipe below the text area.
-*/
-
-/* 
-q: I want to add a header with the name on the left and the logo on the right. How do I do that?
-a: You can use the AppBar component from Material UI. 
-The AppBar component has a position prop that you can set to "static" to make it fixed at the top of the page. 
-You can use the Toolbar component to add content to the AppBar. 
-You can use the Typography component to add text to the Toolbar. 
-You can use the IconButton component to add an icon to the Toolbar. 
-You can use the img tag to add an image to the IconButton component. 
-You can use the style prop to set the height of the image.
-
-
-q: I want to add each nutrition fact to a separate line. How do I do that? The data comes back as a string and lokks like this: 
-"\n\nCalories: 143 \nTotal Fat: 2.5 g \nSaturated Fat: 1.3 g \nTrans Fat: 0 g \nCholesterol: 5 mg \nSodium: 126 mg \nTotal Carbohydrate: 28.4 g \nDietary Fiber: 0.6 g \nSugars: 6.2 g \nProtein: 2.8 g"
-
-a: You can use the split method to split the string into an array of strings.
-You can use the map method to iterate over the array of strings and return a Typography component for each string.
-You can use the key prop to set a unique key for each Typography component.
-*/
-
 import React, { useState, useEffect } from "react";
 import {
   Button,
@@ -90,7 +64,7 @@ function HomePage() {
       <Header />
       <Container maxWidth="md" style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}>
         <Typography variant="h3" gutterBottom>
-          🍎 Find Nutrition Value for any recipe
+        Running Coach is a GPT designed to serve as a digital running assistant. 
         </Typography>
         <Paper elevation={24} style={{ padding: "20px" }}>
           <form onSubmit={handleSubmit}>
@@ -99,7 +73,7 @@ function HomePage() {
                 <TextareaAutosize
                   value={recipe}
                   onChange={(e) => setRecipe(e.target.value)}
-                  placeholder="Enter recipe to get nutrition facts"
+                  placeholder="Enter information about your running experience "
                   style={{
                     width: "98%",
                     maxWidth: "850px",
