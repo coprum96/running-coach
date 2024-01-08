@@ -7,6 +7,7 @@ import {
   Paper,
   TextareaAutosize,
   Typography,
+  TextField
 } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -17,7 +18,11 @@ import Main from "../components/Main";
 import theme from "../utils/theme";
 
 function HomePage() {
-  const [recipe, setRecipe] = useState("");
+  const [age, setAge] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [duration, setDuration] = useState("");
+  const [target, setTarget] = useState("");
+  const [additionalWishes, setAdditionalWishes] = useState("");
   const [nutrition, setNutrition] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -34,7 +39,13 @@ function HomePage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ recipe }),
+          body: JSON.stringify({
+            age,
+            frequency,
+            duration,
+            target,
+            additionalWishes,
+          }),
         }
       );
 
@@ -62,7 +73,11 @@ function HomePage() {
 
   function handleClear(event) {
     event.preventDefault();
-    setRecipe("");
+    setAge("");
+    setFrequency("");
+    setDuration("");
+    setTarget("");
+    setAdditionalWishes("");
   }
 
   return (
@@ -73,20 +88,57 @@ function HomePage() {
         maxWidth="md"
         style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}
       >
-
-        <Paper elevation={24} style={{ padding: "20px" }}>
+        <Paper elevation={14} style={{ padding: "20px" }}>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
+                <TextField
+                  label="Age"
+                  type="number"
+                  value={age}
+                  onChange={(e) => setAge(e.target.value)}
+                  fullWidth
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="How often do you want to run per week?"
+                  value={frequency}
+                  onChange={(e) => setFrequency(e.target.value)}
+                  fullWidth
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="How long do you usually run for?"
+                  value={duration}
+                  onChange={(e) => setDuration(e.target.value)}
+                  fullWidth
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  label="What is your running target?"
+                  value={target}
+                  onChange={(e) => setTarget(e.target.value)}
+                  fullWidth
+                  variant="outlined"
+                />
+              </Grid>
+              <Grid item xs={12}>
                 <TextareaAutosize
-                  value={recipe}
-                  onChange={(e) => setRecipe(e.target.value)}
-                  placeholder="Enter information about your running experience "
+                  value={additionalWishes}
+                  onChange={(e) => setAdditionalWishes(e.target.value)}
+                  placeholder="Any additional wishes or information?"
                   style={{
                     width: "98%",
                     maxWidth: "850px",
-                    minHeight: "200px",
+                    minHeight: "80px",
                     padding: "10px",
+                    marginTop: "10px",
                   }}
                 />
               </Grid>
@@ -96,15 +148,15 @@ function HomePage() {
                   variant="contained"
                   color="primary"
                   startIcon={<Send />}
+                  style={{ width: "200px", marginTop: "10px" }}
                 >
-                  Submit
+                  Generate
                 </Button>
-                <br />
                 <Button
-                  style={{ marginTop: "10px" }}
                   variant="contained"
                   color="secondary"
                   onClick={handleClear}
+                  style={{ marginTop: "10px" }}
                 >
                   Clear
                 </Button>
@@ -112,6 +164,7 @@ function HomePage() {
             </Grid>
           </form>
         </Paper>
+
         <div style={{ paddingTop: "40px", textAlign: "center" }}>
           {loading && <CircularProgress />}
           {error && (

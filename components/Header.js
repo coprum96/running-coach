@@ -22,7 +22,13 @@ function Header() {
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
         <Typography variant="h5" className={classes.title}>
-          Running Coach GPT
+          <span role="img" aria-label="Running emoji">
+            🏃
+          </span>{" "}
+          Hey there! I'm your Running Coach GPT
+          <span role="img" aria-label="Running emoji">
+            🏃
+          </span>
         </Typography>
       </Toolbar>
     </AppBar>
