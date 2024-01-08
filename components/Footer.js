@@ -7,12 +7,11 @@ const Footer = () => {
             elevation={24}
             style={{
                 padding: "20px",
-                position: "fixed",
                 bottom: "0",
                 width: "100%",
                 textAlign: "center",
-                backgroundColor: "#282c34", // Adjust the background color to your preference
-                color: "#61dafb", // Adjust the text color to your preference
+                backgroundColor: "#ffffff", // Adjust the background color to your preference
+                color: "#121212", // Adjust the text color to your preference
             }}
         >
             <Typography variant="body1" style={{ marginBottom: "8px" }}>

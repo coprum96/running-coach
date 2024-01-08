@@ -5,12 +5,15 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#121212",
+    position: "fixed",
+    top: 50,
+    width: "100%",
   },
   title: {
     flexGrow: 1,
     textAlign: "center",
     fontFamily: "Nike", // Use the appropriate font family
-    fontSize: "32px",
+    fontSize: "25px",
     color: "#ffffff", // White color for text
   },
 }));

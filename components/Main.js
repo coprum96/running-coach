@@ -5,7 +5,7 @@ import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 const useStyles = makeStyles((theme) => ({
   root: {
     padding: theme.spacing(3),
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(18),
     maxWidth: 600,
     marginLeft: "auto",
     marginRight: "auto",
