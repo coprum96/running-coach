@@ -39,14 +39,12 @@ function Main() {
           The Running Coach GPT is a digital running assistant powered by
           ChatGPT. It provides personalized training plans, advice on improving
           running speed, suggestions for running routes, and engages in
-          conversational interactions with users. The tool, designed to be
-          user-friendly, incorporates motivational features to support users in
-          maintaining enthusiasm and continuity in their running journey.
+          conversational interactions with users.
         </Typography>
       </div>
       <div className={classes.button}>
         <Typography>
-          Want to start your personalized training plan? Click the button below.
+          Want to start your personalized training plan? Let's go!
         </Typography>
         <ArrowForwardIcon className={classes.icon} />
       </div>

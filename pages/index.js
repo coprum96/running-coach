@@ -7,7 +7,7 @@ import {
   Paper,
   TextareaAutosize,
   Typography,
-  TextField
+  TextField,
 } from "@material-ui/core";
 import { Send } from "@material-ui/icons";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -16,6 +16,8 @@ import NutritionFacts from "../components/NutritionFacts";
 import Footer from "../components/Footer";
 import Main from "../components/Main";
 import theme from "../utils/theme";
+import FAQs from "../components/FAQ";
+import Donat from "../components/Donat";
 
 function HomePage() {
   const [age, setAge] = useState("");
@@ -82,6 +84,7 @@ function HomePage() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Donat />
       <Header />
       <Main />
       <Container
@@ -176,6 +179,8 @@ function HomePage() {
           )}
           {nutrition && <NutritionFacts data={nutrition} />}
         </div>
+      <FAQs />
+      
       </Container>
       <Footer />
     </ThemeProvider>
