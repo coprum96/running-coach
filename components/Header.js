@@ -1,41 +1,35 @@
 import React from "react";
-import { AppBar, Toolbar, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
+const Header = () => {
+  const headerStyle = {
     backgroundColor: "#121212",
     position: "fixed",
     top: 50,
     width: "100%",
-  },
-  title: {
-    flexGrow: 1,
+    padding: "10px 0",
     textAlign: "center",
+  };
+
+  const titleStyle = {
+    flexGrow: 1,
     fontFamily: "Nike", // Use the appropriate font family
     fontSize: "25px",
     color: "#ffffff", // White color for text
-  },
-}));
-
-function Header() {
-  const classes = useStyles();
+  };
 
   return (
-    <AppBar position="static" className={classes.appBar}>
-      <Toolbar>
-        <Typography variant="h5" className={classes.title}>
-          <span role="img" aria-label="Running emoji">
-            🏃
-          </span>{" "}
-          Hey there! I'm your Running Coach GPT
-          <span role="img" aria-label="Running emoji">
-            🏃
-          </span>
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <header style={headerStyle}>
+      <div style={titleStyle}>
+        <span role="img" aria-label="Running emoji">
+          🏃
+        </span>{" "}
+        Hey there! I'm your Running Coach GPT
+        <span role="img" aria-label="Running emoji">
+          🏃
+        </span>
+      </div>
+    </header>
   );
-}
+};
 
 export default Header;

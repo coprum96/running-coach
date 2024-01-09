@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Container,
-  Typography,
-} from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import React, { useState } from "react";
+// import "./FAQs.css"; // Create a FAQs.css file for your styles
 
 const FAQs = () => {
   const faqData = [
@@ -29,22 +22,28 @@ const FAQs = () => {
     },
   ];
 
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  const handleAccordionClick = (index) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
+
   return (
-    <Container style={{ marginTop: "20px" }}>
-      <Typography variant="h4" gutterBottom>
-        Frequently Asked Questions
-      </Typography>
+    <div className="faq-container">
+      <h4 className="faq-title">Frequently Asked Questions</h4>
       {faqData.map((faq, index) => (
-        <Accordion key={index} style={{ marginBottom: "8px" }}>
-          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography variant="h6">{faq.question}</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <Typography>{faq.answer}</Typography>
-          </AccordionDetails>
-        </Accordion>
+        <div key={index} className={`accordion ${expandedIndex === index ? "expanded" : ""}`}>
+          <div className="accordion-header" onClick={() => handleAccordionClick(index)}>
+            <h6>{faq.question}</h6>
+          </div>
+          {expandedIndex === index && (
+            <div className="accordion-content">
+              <p>{faq.answer}</p>
+            </div>
+          )}
+        </div>
       ))}
-    </Container>
+    </div>
   );
 };
 

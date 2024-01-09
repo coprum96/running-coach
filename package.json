@@ -2,25 +2,17 @@
   "private": true,
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "next build && npm install --legacy-peer-deps",
     "start": "next start",
     "devserver": "nodemon pages/api/server.js",
     "test": "jest",
     "start:all": "concurrently \"npm run devserver\" \"npm run dev\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@material-ui/core": "^4.12.4",
-    "@material-ui/icons": "^4.11.3",
-    "@mui/material": "^5.15.3",
-    "@mui/system": "^5.15.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "install": "^0.13.0",
-    "next": "latest",
-    "npm": "^10.2.5",
+    "next": "^12.0.7",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

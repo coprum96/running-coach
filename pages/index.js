@@ -1,23 +1,10 @@
 import React, { useState } from "react";
-import {
-  Button,
-  CircularProgress,
-  Container,
-  Grid,
-  Paper,
-  TextareaAutosize,
-  Typography,
-  TextField,
-} from "@material-ui/core";
-import { Send } from "@material-ui/icons";
-import { ThemeProvider } from "@material-ui/core/styles";
 import Header from "../components/Header";
 import NutritionFacts from "../components/NutritionFacts";
 import Footer from "../components/Footer";
 import Main from "../components/Main";
-import theme from "../utils/theme";
 import FAQs from "../components/FAQ";
-import Donat from "../components/Donat";
+import Donat from "../components/Donat"; // Corrected import
 
 function HomePage() {
   const [age, setAge] = useState("");
@@ -83,107 +70,99 @@ function HomePage() {
   }
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <Donat />
       <Header />
       <Main />
-      <Container
-        maxWidth="md"
-        style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}
-      >
-        <Paper elevation={14} style={{ padding: "20px" }}>
+<div style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}>
+        <div style={{ padding: "20px" }}>
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  label="Age"
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                Age:
+                <input
                   type="number"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
-                  fullWidth
-                  variant="outlined"
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="How often do you want to run per week?"
+              </label>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                How often do you want to run per week?:
+                <input
+                  type="text"
                   value={frequency}
                   onChange={(e) => setFrequency(e.target.value)}
-                  fullWidth
-                  variant="outlined"
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="How long do you usually run for?"
+              </label>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                How long do you usually run for?:
+                <input
+                  type="text"
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
-                  fullWidth
-                  variant="outlined"
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="What is your running target?"
+              </label>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+              <label>
+                What is your running target?:
+                <input
+                  type="text"
                   value={target}
                   onChange={(e) => setTarget(e.target.value)}
-                  fullWidth
-                  variant="outlined"
                 />
-              </Grid>
-              <Grid item xs={12}>
-                <TextareaAutosize
-                  value={additionalWishes}
-                  onChange={(e) => setAdditionalWishes(e.target.value)}
-                  placeholder="Any additional wishes or information?"
-                  style={{
-                    width: "98%",
-                    maxWidth: "850px",
-                    minHeight: "80px",
-                    padding: "10px",
-                    marginTop: "10px",
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="primary"
-                  startIcon={<Send />}
-                  style={{ width: "200px", marginTop: "10px" }}
-                >
-                  Generate
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={handleClear}
-                  style={{ marginTop: "10px" }}
-                >
-                  Clear
-                </Button>
-              </Grid>
-            </Grid>
+              </label>
+            </div>
+            <div style={{ marginBottom: "20px" }}>
+              <textarea
+                value={additionalWishes}
+                onChange={(e) => setAdditionalWishes(e.target.value)}
+                placeholder="Any additional wishes or information?"
+                style={{
+                  width: "100%",
+                  minHeight: "80px",
+                  padding: "10px",
+                  marginTop: "10px",
+                }}
+              />
+            </div>
+            <div>
+              <button
+                type="submit"
+                style={{ width: "200px", marginTop: "10px" }}
+              >
+                Generate
+              </button>
+              <button
+                type="button"
+                onClick={handleClear}
+                style={{ marginTop: "10px" }}
+              >
+                Clear
+              </button>
+            </div>
           </form>
-        </Paper>
+        </div>
 
         <div style={{ paddingTop: "40px", textAlign: "center" }}>
-          {loading && <CircularProgress />}
+          {loading && <div>Loading...</div>}
           {error && (
-            <Typography color="error">
+            <div style={{ color: "red" }}>
               An error occurred: {error === "Unauthorized: Please provide a valid API key."
                 ? "Please provide a valid API key."
                 : "Unable to get coaching info. Please try again later."}
-            </Typography>
+            </div>
           )}
           {nutrition && <NutritionFacts data={nutrition} />}
         </div>
+      </div>
       <FAQs />
-      
-      </Container>
       <Footer />
-    </ThemeProvider>
+    </>
   );
 }
 

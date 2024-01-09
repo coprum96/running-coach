@@ -1,35 +1,35 @@
 import React from "react";
-import { Paper, Typography } from "@material-ui/core";
 
 const Footer = () => {
     return (
-        <Paper
-            elevation={24}
+        <div
             style={{
                 padding: "20px",
+                position: "fixed",
                 bottom: "0",
                 width: "100%",
                 textAlign: "center",
                 backgroundColor: "#ffffff", // Adjust the background color to your preference
                 color: "#121212", // Adjust the text color to your preference
+                boxShadow: "0 -2px 4px rgba(0, 0, 0, 0.1)", // Add a subtle shadow at the bottom
             }}
         >
-            <Typography variant="body1" style={{ marginBottom: "8px" }}>
+            <p style={{ marginBottom: "8px", fontSize: "16px" }}>
                 Your Footer Content Here
-            </Typography>
-            <Typography variant="body2">
-                Powered by
+            </p>
+            <p style={{ fontSize: "14px" }}>
+                Powered by{" "}
                 <a
                     href="https://platform.openai.com/overview"
                     target="_blank"
                     rel="noopener noreferrer"
-                    style={{ color: "#61dafb", marginLeft: "4px" }}
+                    style={{ color: "#61dafb" }}
                 >
                     OpenAI
                 </a>{" "}
                 🤖
-            </Typography>
-        </Paper>
+            </p>
+        </div>
     );
 };
 
