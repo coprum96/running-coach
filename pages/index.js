@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import Header from "../components/Header";
 import NutritionFacts from "../components/NutritionFacts";
-import Footer from "../components/Footer";
-import Main from "../components/Main";
-import FAQs from "../components/FAQ";
-import Donat from "../components/Donat"; // Corrected import
 
 function HomePage() {
   const [age, setAge] = useState("");
@@ -71,24 +66,22 @@ function HomePage() {
 
   return (
     <>
-      <Donat />
-      <Header />
-      <Main />
-<div style={{ marginTop: "40px", minHeight: "100vh", paddingBottom: "100px" }}>
-        <div style={{ padding: "20px" }}>
+<div style={{ minHeight: "100vh", background: "#121212", color: "#333", fontFamily: "'Arial', sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ padding: "20px", borderRadius: "10px", boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)", width: "300px", background: "#fff" }}>
           <form onSubmit={handleSubmit}>
-            <div style={{ marginBottom: "20px" }}>
-              <label>
-                Age:
-                <input
-                  type="number"
-                  value={age}
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </label>
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-              <label>
+          <div style={{ marginBottom: "20px" }}>
+            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+              Age:
+            </label>
+            <input
+              type="number"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              style={{ padding: "8px", borderRadius: "4px", border: "1px solid #ccc", width: "100%", fontSize: "14px" }}
+            />
+          </div>
+          <div style={{ marginBottom: "20px" }}>
+            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
                 How often do you want to run per week?:
                 <input
                   type="text"
@@ -98,7 +91,7 @@ function HomePage() {
               </label>
             </div>
             <div style={{ marginBottom: "20px" }}>
-              <label>
+            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
                 How long do you usually run for?:
                 <input
                   type="text"
@@ -108,7 +101,7 @@ function HomePage() {
               </label>
             </div>
             <div style={{ marginBottom: "20px" }}>
-              <label>
+            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
                 What is your running target?:
                 <input
                   type="text"
@@ -123,27 +116,20 @@ function HomePage() {
                 onChange={(e) => setAdditionalWishes(e.target.value)}
                 placeholder="Any additional wishes or information?"
                 style={{
-                  width: "100%",
-                  minHeight: "80px",
+                  width: "93%",
+                  minHeight: "30px",
                   padding: "10px",
                   marginTop: "10px",
                 }}
               />
             </div>
             <div>
-              <button
-                type="submit"
-                style={{ width: "200px", marginTop: "10px" }}
-              >
-                Generate
-              </button>
-              <button
-                type="button"
-                onClick={handleClear}
-                style={{ marginTop: "10px" }}
-              >
-                Clear
-              </button>
+            <button type="submit" style={{ width: "100%", marginTop: "10px", background: "#0084ff", color: "#fff", padding: "15px", borderRadius: "4px", border: "none", cursor: "pointer", fontSize: "16px" }}>
+              Generate
+            </button>
+            <button type="button" onClick={handleClear} style={{ marginTop: "10px", background: "#d32f2f", color: "#fff", padding: "10px", borderRadius: "4px", border: "none", cursor: "pointer" }}>
+              Clear
+            </button>
             </div>
           </form>
         </div>
@@ -160,8 +146,6 @@ function HomePage() {
           {nutrition && <NutritionFacts data={nutrition} />}
         </div>
       </div>
-      <FAQs />
-      <Footer />
     </>
   );
 }
