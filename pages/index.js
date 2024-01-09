@@ -67,8 +67,8 @@ function HomePage() {
 
   return (
     <>
-    <Header/>
 <div style={{ minHeight: "100vh", background: "#121212", color: "#333", fontFamily: "'Nike', sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <Header/>
       <div style={{ padding: "40px", borderRadius: "15px", boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)", width: "300px", background: "#fff" }}>
           <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "20px" }}>
@@ -83,38 +83,75 @@ function HomePage() {
             />
           </div>
           <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
-                How often do you want to run per week?:
-                <input
-                  type="number"
-                  value={frequency}
-                  onChange={(e) => setFrequency(e.target.value)}
-                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
-                />
-              </label>
-            </div>
+  <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+    How often do you want to run per week?:
+    <select
+      value={frequency}
+      onChange={(e) => setFrequency(e.target.value)}
+      style={{
+        padding: "15px",
+        borderRadius: "4px",
+        border: "1px solid #ccc",
+        width: "100%",
+        fontSize: "14px",
+      }}
+    >
+      <option value="">Select Frequency</option>
+      <option value="less_than_3">Less than 3 times per week</option>
+      <option value="3">3 times per week</option>
+      <option value="4">4 times per week</option>
+      <option value="5_or_more">5 or more times per week</option>
+    </select>
+  </label>
+</div>
+
             <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
-                How long do you usually run for?:
-                <input
-                  type="text"
-                  value={duration}
-                  onChange={(e) => setDuration(e.target.value)}
-                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
-                />
-              </label>
-            </div>
-            <div style={{ marginBottom: "20px" }}>
-            <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
-                What is your running target?:
-                <input
-                  type="text"
-                  value={target}
-                  onChange={(e) => setTarget(e.target.value)}
-                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
-                />
-              </label>
-            </div>
+  <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+    How long do you usually run for?:
+    <select
+      value={duration}
+      onChange={(e) => setDuration(e.target.value)}
+      style={{
+        padding: "15px",
+        borderRadius: "4px",
+        border: "1px solid #ccc",
+        width: "100%",
+        fontSize: "14px",
+      }}
+    >
+      <option value="">Select Duration</option>
+      <option value="less_than_5">Less than 5 km</option>
+      <option value="5">5 minutes</option>
+      <option value="between_5_and_10">Between 5 and 10 km</option>
+      <option value="above_10">Above 10 km</option>
+    </select>
+  </label>
+</div>
+
+<div style={{ marginBottom: "20px" }}>
+  <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
+    What is your running target?:
+    <select
+      value={target}
+      onChange={(e) => setTarget(e.target.value)}
+      style={{
+        padding: "15px",
+        borderRadius: "4px",
+        border: "1px solid #ccc",
+        width: "100%",
+        fontSize: "14px",
+      }}
+    >
+      <option value="">Select Target</option>
+      <option value="5k">5K</option>
+      <option value="10k">10K</option>
+      <option value="half_marathon">Half Marathon</option>
+      <option value="marathon">Marathon</option>
+      <option value="other">Ultra</option>
+    </select>
+  </label>
+</div>
+
             <div style={{ marginBottom: "20px" }}>
               <textarea
                 value={additionalWishes}
