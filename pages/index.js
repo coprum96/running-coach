@@ -167,7 +167,7 @@ function HomePage() {
               />
             </div>
             <div>
-            <button type="submit" style={{ width: "100%", marginTop: "10px", background: "#0084ff", color: "#fff", padding: "15px", borderRadius: "4px", border: "none", cursor: "pointer", fontSize: "16px" }}>
+            <button type="submit" style={{ width: "100%", marginTop: "10px", background: "#0084ff", color: "#fff", padding: "15px", borderRadius: "40px", border: "none", cursor: "pointer", fontSize: "20px" }}>
               Generate
             </button>
             <button type="button" onClick={handleClear} style={{ marginTop: "10px", background: "#d32f2f", color: "#fff", padding: "10px", borderRadius: "4px", border: "none", cursor: "pointer" }}>
@@ -180,7 +180,7 @@ function HomePage() {
         <div style={{ paddingTop: "50px", textAlign: "center" }}>
   {loading && <div style={{ fontSize: "24px", color: "#3498db", fontWeight: "bold" }}>Loading...</div>}
   {error && (
-    <div style={{ color: "red", fontSize: "18px" }}>
+    <div style={{ color: "red", fontSize: "20px" }}>
       An error occurred: {error === "Unauthorized: Please provide a valid API key."
         ? "Please provide a valid API key."
         : "Unable to get coaching info. Please try again later."}
