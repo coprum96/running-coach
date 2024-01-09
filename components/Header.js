@@ -3,10 +3,8 @@ import React from "react";
 const Header = () => {
   const headerStyle = {
     backgroundColor: "#121212",
-    position: "fixed",
-    top: 50,
     width: "100%",
-    padding: "10px 0",
+    padding: "20px 0",
     textAlign: "center",
   };
 

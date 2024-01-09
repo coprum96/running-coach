@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NutritionFacts from "../components/NutritionFacts";
+import Header from "../components/Header";
 
 function HomePage() {
   const [age, setAge] = useState("");
@@ -66,8 +67,9 @@ function HomePage() {
 
   return (
     <>
-<div style={{ minHeight: "100vh", background: "#121212", color: "#333", fontFamily: "'Arial', sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ padding: "20px", borderRadius: "10px", boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)", width: "300px", background: "#fff" }}>
+    <Header/>
+<div style={{ minHeight: "100vh", background: "#121212", color: "#333", fontFamily: "'Nike', sans-serif", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+      <div style={{ padding: "40px", borderRadius: "15px", boxShadow: "0 10px 8px rgba(0, 0, 0, 0.1)", width: "300px", background: "#fff" }}>
           <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "20px" }}>
             <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
@@ -77,16 +79,17 @@ function HomePage() {
               type="number"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              style={{ padding: "8px", borderRadius: "4px", border: "1px solid #ccc", width: "100%", fontSize: "14px" }}
+              style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
             />
           </div>
           <div style={{ marginBottom: "20px" }}>
             <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", fontWeight: "bold" }}>
                 How often do you want to run per week?:
                 <input
-                  type="text"
+                  type="number"
                   value={frequency}
                   onChange={(e) => setFrequency(e.target.value)}
+                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
                 />
               </label>
             </div>
@@ -97,6 +100,7 @@ function HomePage() {
                   type="text"
                   value={duration}
                   onChange={(e) => setDuration(e.target.value)}
+                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
                 />
               </label>
             </div>
@@ -107,6 +111,7 @@ function HomePage() {
                   type="text"
                   value={target}
                   onChange={(e) => setTarget(e.target.value)}
+                  style={{ padding: "12px", borderRadius: "4px", border: "1px solid #ccc", width: "93%", fontSize: "14px" }}
                 />
               </label>
             </div>
@@ -115,6 +120,7 @@ function HomePage() {
                 value={additionalWishes}
                 onChange={(e) => setAdditionalWishes(e.target.value)}
                 placeholder="Any additional wishes or information?"
+                type="text"
                 style={{
                   width: "93%",
                   minHeight: "30px",
@@ -134,14 +140,14 @@ function HomePage() {
           </form>
         </div>
 
-        <div style={{ paddingTop: "40px", textAlign: "center" }}>
-          {loading && <div>Loading...</div>}
-          {error && (
-            <div style={{ color: "red" }}>
-              An error occurred: {error === "Unauthorized: Please provide a valid API key."
-                ? "Please provide a valid API key."
-                : "Unable to get coaching info. Please try again later."}
-            </div>
+        <div style={{ paddingTop: "50px", textAlign: "center" }}>
+  {loading && <div style={{ fontSize: "24px", color: "#3498db", fontWeight: "bold" }}>Loading...</div>}
+  {error && (
+    <div style={{ color: "red", fontSize: "18px" }}>
+      An error occurred: {error === "Unauthorized: Please provide a valid API key."
+        ? "Please provide a valid API key."
+        : "Unable to get coaching info. Please try again later."}
+    </div>
           )}
           {nutrition && <NutritionFacts data={nutrition} />}
         </div>
