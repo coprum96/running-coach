@@ -152,22 +152,25 @@ function HomePage() {
   </label>
 </div>
 
-            <div style={{ marginBottom: "20px" }}>
-              <textarea
-                value={additionalWishes}
-                onChange={(e) => setAdditionalWishes(e.target.value)}
-                placeholder="Any additional wishes or information?"
-                type="text"
-                style={{
-                  width: "93%",
-                  minHeight: "30px",
-                  padding: "10px",
-                  marginTop: "10px",
-                }}
-              />
-            </div>
+<div style={{ marginBottom: "20px" }}>
+  <input
+    type="text"
+    value={additionalWishes}
+    onChange={(e) => setAdditionalWishes(e.target.value)}
+    placeholder="Any additional wishes or information?"
+    style={{
+      width: "93%",
+      minHeight: "30px",
+      padding: "10px",
+      marginTop: "10px",
+      border: "1px solid #ccc", // Add border for styling (optional)
+      borderRadius: "4px", // Add border-radius for styling (optional)
+    }}
+  />
+</div>
+
             <div>
-            <button type="submit" style={{ width: "100%", marginTop: "10px", background: "#0084ff", color: "#fff", padding: "15px", borderRadius: "40px", border: "none", cursor: "pointer", fontSize: "20px" }}>
+            <button type="submit" style={{ width: "100%", marginTop: "10px", background: "#0084ff", color: "#fff", padding: "15px", borderRadius: "20px", border: "none", cursor: "pointer", fontSize: "17px" }}>
               Generate
             </button>
             <button type="button" onClick={handleClear} style={{ marginTop: "10px", background: "#d32f2f", color: "#fff", padding: "10px", borderRadius: "4px", border: "none", cursor: "pointer" }}>

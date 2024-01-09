@@ -11,7 +11,7 @@ const Header = () => {
   const titleStyle = {
     flexGrow: 1,
     fontFamily: "Nike", // Use the appropriate font family
-    fontSize: "25px",
+    fontSize: "22px",
     color: "#ffffff", // White color for text
   };
 
